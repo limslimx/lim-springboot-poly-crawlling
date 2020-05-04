@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class NaverNewsCrawlling {
 
-    private String url;
+    private String url; //크롤링하고 싶은 사이트 url로 아래서 지정해주면 됨
     private Document doc;
 
     public String returnCrawlling() throws Exception{
