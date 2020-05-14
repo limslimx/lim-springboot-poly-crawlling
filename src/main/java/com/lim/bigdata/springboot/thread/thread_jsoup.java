@@ -49,9 +49,9 @@ public class thread_jsoup extends Thread {
 
             String blog_url = "https://blog.naver.com/with_msip/221846679759";
             Document blog_doc = Jsoup.connect(blog_url).get();
-            Element iframeElement = blog_doc.select("body").first().select("iframe[id=mainFrame]").first();
+            Element iframeElement = blog_doc.select("body").first().select("iframe[id=mainFrame]").first(); //first() 메서드는 첫번째 body, 첫번째 iframe을 의미함
             System.out.println(iframeElement.attr("src"));
-            String src = iframeElement.attr("src");
+            String src = iframeElement.attr("src"); //해당 태그의 속성값이 src인 것을 가져옴
 
             blog_doc = Jsoup.connect("https://blog.naver.com"+src).get();
 
@@ -70,12 +70,12 @@ public class thread_jsoup extends Thread {
 
                 Document naver_blog_pagetotal = Jsoup.connect(naver_url+naver_url_page).get();
 
-                Elements blog_link = naver_blog_pagetotal.select("a.sh_blog_title._sp_each_url._sp_each_title");
+                Elements blog_link = naver_blog_pagetotal.select("a.sh_blog_title._sp_each_url._sp_each_title"); //하나의 태그에 class속성값이 여러 개 있을 때 이런 식으로 쓰면 됨
 
                 for(Element element : blog_link)
                 {
                     String n = element.attr("href");
-                    if(n.contains("blog.naver.com"))
+                    if(n.contains("blog.naver.com")) //contains() 메서드는 해당 문자열을 포함하고 있으면 true를 반환하고 없으면 false를 반환함
                     {
                         System.out.println(element.attr("href"));
 
